@@ -110,7 +110,7 @@ def Rate_Thai():
         # If no document was found, create a new one
         db.collection('getCurrency').add(SRO)
         print("Created a new document "+company_name)
-
+            
     driver.close()
     print('done')
 
@@ -215,6 +215,11 @@ def Rate_SRO():
         # If no document was found, create a new one
         db.collection('getCurrency').add(SRO)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlSRO': url})
+    print(f"URL SRO {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
+
 
     driver.close()
     print('done')
@@ -337,6 +342,10 @@ def Rate_SRG():
         # If no document was found, create a new one
         db.collection('getCurrency').add(SRG)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlSRG': url})
+    print(f"URL SRG {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
@@ -537,6 +546,10 @@ def Rate_TWV():
     
         db.collection('getCurrency').add(TWV)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlTWV': url})
+    print(f"URL TWV {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
@@ -654,6 +667,10 @@ def Rate_K79():
         # If no document was found, create a new one
         db.collection('getCurrency').add(K79)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlK79': url})
+    print(f"URL K79 {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
@@ -778,6 +795,10 @@ def Rate_VSU():
         # If no document was found, create a new one
         db.collection('getCurrency').add(VSU)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlVSU': url})
+    print(f"URL VSU {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
@@ -894,6 +915,10 @@ def Rate_XNE():
         # If no document was found, create a new one
         db.collection('getCurrency').add(XNE)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlXNE': url})
+    print(f"URL XNE {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
@@ -1007,6 +1032,10 @@ def Rate_SME():
         # If no document was found, create a new one
         db.collection('getCurrency').add(SME)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlSME': url})
+    print(f"URL SME {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
@@ -1135,23 +1164,34 @@ def Rate_VPC():
         # If no document was found, create a new one
         db.collection('getCurrency').add(VPC)
         print("Created a new document "+company_name)
+        
+    # Save on Firebase keepPIN pin
+    docsURL = db.collection('keepUID').document("pin").update({'urlVPC': url})
+    print(f"URL VPC {url} has been saved to Firestore under collection 'keepUID' and document 'pin'.")
 
     driver.close()
     print('done')
 
 def scrape_data():
     
-    Rate_SRO()
-    Rate_SRG()
+    # Rate_SRO()
+    # Rate_SRG()
     
-    # Rate_TWV() Un handle!?
+    # # Rate_TWV() Un handle!?
+    
+    # Rate_K79()
+    # Rate_VSU()
+    # Rate_XNE()
+    # Rate_SME()
+    # Rate_VPC()
     
     Rate_K79()
-    Rate_VSU()
-    Rate_XNE()
-    Rate_SME()
     Rate_VPC()
-    
+    Rate_SME()
+    Rate_XNE()
+    Rate_SRG()
+    Rate_VSU()
+    Rate_SRO()
 
 # ตั้งเวลาให้รันโค้ด scrape_data() ทุกๆ 24 ชั่วโมง
 schedule.every(15).seconds.do(scrape_data)
